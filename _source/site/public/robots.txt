@@ -1,0 +1,29 @@
+# Основные правила для поисковых роботов
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# AI-краулеры (разрешаем полный доступ)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Карта сайта
+Sitemap: https://alfatapes.ru/sitemap.xml

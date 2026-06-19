@@ -6,35 +6,28 @@ const MOSCOW_URL = "https://tapes.moscow";
 
 const slides = [
   {
-    title: "alfatápes",
-    accent: "порядок в заявках, клиентах и задачах за 7 дней",
-    body: "Настраиваем рабочий контур вокруг ваших чатов, сайта и CRM: заявки не теряются, следующий шаг виден, руководитель понимает, что происходит.",
+    title: "alfatapes",
+    accent: "умные инструменты для бизнеса",
+    body: "Боты, агенты и системы для ежедневной работы.",
+    cta: "bot",
   },
   {
-    title: "Не новая CRM",
-    accent: "не ещё один чат",
-    body: "Мы не заставляем команду переезжать в новую систему. Сначала смотрим, где сейчас теряются заявки, договорённости и задачи — и закрываем это место.",
+    title: "Собираем продукты",
+    accent: "вокруг реальной работы",
+    body: "Подключаем ботов, сайты, задачи и аналитику так, чтобы заявки, контекст и следующий шаг всегда были под вашим контролем.",
   },
   {
-    title: "Заявки теряются не потому",
-    accent: "что люди плохие",
-    body: "Просто всё живёт в разных местах: Telegram, сайт, CRM, голосовые, созвоны и личные заметки. Контекст не собирается сам.",
+    title: "tapes",
+    accent: "один экран вместо пяти чатов",
+    body: "Готовые инструменты для совместной работы людей и агентов в простом приложении. Одно кольцо, чтобы править всеми.",
+    cta: "tapes",
   },
   {
-    title: "Собираем первый",
-    accent: "рабочий контур",
-    body: "Заявка приходит из чата или формы, попадает в понятное место, получает ответственного, следующий шаг и напоминание. Важные действия подтверждает человек.",
-  },
-  {
-    title: "Первый результат",
-    accent: "за неделю",
-    body: "За 7 дней можно запустить простой сценарий: заявки из Telegram или сайта, карточка клиента, задача менеджеру и контроль следующего шага.",
-  },
-  {
-    title: "Подходит",
-    accent: "если работа уже идёт в чатах",
-    body: "Малый бизнес, агентство, сервисная команда, локальный проект или сообщество — везде, где люди пишут, договариваются и потом теряют продолжение.",
-    cta: true,
+    title: "Дайте знать",
+    accent: "если теряется контекст",
+    body: "Если есть поток заявок, команда, клиенты или проект, где важное распадается между чатами, задачами и заметками.",
+    partners: ["МФЦН", "КОН", "ЛИНИЯ", "ИСКРА"],
+    cta: "bot",
   },
 ];
 
@@ -117,7 +110,7 @@ export default function Home() {
         {slides.map((slide, index) => (
           <article
             key={slide.title}
-            id={slide.cta ? "product" : undefined}
+            id={slide.cta === "tapes" ? "product" : undefined}
             className={`alfStorySlide${slide.cta ? " isProduct" : ""}`}
           >
             <div className="alfStoryContent">
@@ -127,19 +120,25 @@ export default function Home() {
               </h1>
               <p className="alfStoryBody">{slide.body}</p>
 
+              {slide.partners && (
+                <div className="alfPartnerLine" aria-label="Партнёры">
+                  <span>Партнёры:</span>
+                  <strong>{slide.partners.join(" · ")}</strong>
+                </div>
+              )}
+
               {slide.cta && (
                 <div className="alfProductProof">
-                  <div>
-                    <strong>разобрать ваш контур</strong>
-                  </div>
-                  <p>Пример подхода: tapes.Moscow — публичный продукт, где Telegram становится входом в рабочий сценарий.</p>
                   <div className="alfProductActions">
-                    <a className="alfProductButton isPrimary" href={BOT_URL} target="_blank" rel="noopener noreferrer">
-                      написать в Telegram <Send className="h-4 w-4" />
-                    </a>
-                    <a className="alfProductButton" href={MOSCOW_URL} target="_blank" rel="noopener noreferrer">
-                      посмотреть пример <ArrowRight className="h-4 w-4" />
-                    </a>
+                    {slide.cta === "tapes" ? (
+                      <a className="alfProductButton isPrimary" href={MOSCOW_URL} target="_blank" rel="noopener noreferrer">
+                        перейти <ArrowRight className="h-4 w-4" />
+                      </a>
+                    ) : (
+                      <a className="alfProductButton isPrimary" href={BOT_URL} target="_blank" rel="noopener noreferrer">
+                        написать нам <span>@yo_tapes_bot</span> <Send className="h-4 w-4" />
+                      </a>
+                    )}
                   </div>
                 </div>
               )}

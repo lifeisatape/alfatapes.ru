@@ -97,6 +97,347 @@
   }
 }
 
+.alfStoryPage {
+  --alf-bg: #0e0e0c;
+  --alf-surface: rgba(30, 30, 24, 0.78);
+  --alf-border: rgba(255, 255, 255, 0.11);
+  --alf-text: #e8e6df;
+  --alf-muted: #9c9a91;
+  --alf-dim: #5c5a54;
+  --alf-accent: #c8b97a;
+  --alf-red: #c0504a;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--alf-bg);
+  color: var(--alf-text);
+  font-family: "IBM Plex Sans", Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.alfStoryVideo,
+.alfStoryShade {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.alfStoryVideo {
+  object-fit: cover;
+  opacity: 0.18;
+  filter: saturate(0.75) contrast(1.08);
+}
+
+.alfStoryShade {
+  background:
+    linear-gradient(90deg, rgba(14, 14, 12, 0.96), rgba(14, 14, 12, 0.72) 48%, rgba(14, 14, 12, 0.94)),
+    radial-gradient(circle at 72% 35%, rgba(200, 185, 122, 0.13), transparent 34%);
+}
+
+.alfStoryTop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px clamp(18px, 4vw, 44px);
+}
+
+.alfStoryBrand,
+.alfStoryNav a,
+.alfStoryEyebrow,
+.alfStorySystem,
+.alfProofLabel,
+.alfPrimaryButton,
+.alfTextLink {
+  font-family: "SF Mono", "Martian Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.06em;
+}
+
+.alfStoryBrand {
+  color: var(--alf-accent);
+  font-size: 13px;
+}
+
+.alfStoryNav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.alfStoryNav a {
+  color: var(--alf-muted);
+  font-size: 11px;
+}
+
+.alfStoryNav a:hover {
+  color: var(--alf-text);
+}
+
+.alfStoryProgress {
+  position: fixed;
+  top: 58px;
+  left: clamp(18px, 4vw, 44px);
+  right: clamp(18px, 4vw, 44px);
+  z-index: 30;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.alfStoryProgress span {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.alfStoryProgress span:first-child {
+  background: var(--alf-accent);
+}
+
+.alfStoryRail {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 100vw;
+  height: 100svh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.alfStoryRail::-webkit-scrollbar {
+  display: none;
+}
+
+.alfStorySlide {
+  position: relative;
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100svh;
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  padding: 92px clamp(20px, 7vw, 92px) 44px;
+}
+
+.alfStorySystem {
+  position: absolute;
+  top: clamp(104px, 16vh, 156px);
+  right: clamp(20px, 8vw, 112px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 280px;
+  color: rgba(200, 185, 122, 0.42);
+  font-size: clamp(12px, 1.8vw, 15px);
+  line-height: 1.5;
+  text-align: right;
+}
+
+.alfStorySystem span {
+  display: block;
+}
+
+.alfStoryContent {
+  width: min(760px, 100%);
+}
+
+.alfStoryEyebrow {
+  margin: 0 0 20px;
+  color: var(--alf-dim);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.alfStoryTitle {
+  margin: 0;
+  max-width: 14ch;
+  color: var(--alf-text);
+  font-size: clamp(34px, 6vw, 72px);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.alfStoryTitle.isHero {
+  font-size: clamp(42px, 7vw, 86px);
+}
+
+.alfStoryTitle span {
+  display: block;
+  color: var(--alf-accent);
+}
+
+.alfStoryBody {
+  margin: 24px 0 0;
+  max-width: 560px;
+  color: var(--alf-muted);
+  font-size: clamp(17px, 2.2vw, 22px);
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.alfProductProof {
+  display: grid;
+  gap: 14px;
+  width: min(420px, 100%);
+  margin-top: 30px;
+  padding: 20px;
+  background: var(--alf-surface);
+  border: 1px solid var(--alf-border);
+  border-radius: 8px;
+}
+
+.alfProductProof strong {
+  display: block;
+  margin-top: 5px;
+  color: var(--alf-text);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.alfProductProof p {
+  margin: 0;
+  color: var(--alf-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.alfProductProof a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  color: var(--alf-accent);
+  font-size: 13px;
+}
+
+.alfProofLabel {
+  color: var(--alf-dim);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.alfFinalActions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.alfPrimaryButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  border-radius: 4px;
+  background: var(--alf-accent);
+  color: var(--alf-bg);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.alfPrimaryButton:hover {
+  background: #d4c581;
+  color: var(--alf-bg);
+}
+
+.alfTextLink {
+  color: var(--alf-muted);
+  font-size: 11px;
+}
+
+.alfTextLink:hover {
+  color: var(--alf-text);
+}
+
+.alfPrinciples {
+  position: fixed;
+  top: clamp(300px, 42vh, 390px);
+  right: clamp(20px, 8vw, 112px);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 320px;
+}
+
+.alfPrinciple {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 0 11px;
+  background: rgba(30, 30, 24, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 4px;
+  color: var(--alf-muted);
+  font-size: 12px;
+}
+
+.alfPrinciple svg:first-child {
+  color: var(--alf-accent);
+}
+
+.alfPrinciple svg:last-child {
+  color: rgba(200, 185, 122, 0.46);
+}
+
+@media (max-width: 760px) {
+  .alfStoryPage {
+    overflow: hidden;
+  }
+
+  .alfStoryNav {
+    gap: 10px;
+  }
+
+  .alfStoryNav a:nth-child(2) {
+    display: none;
+  }
+
+  .alfStorySlide {
+    padding: 92px 20px 118px;
+    align-items: end;
+  }
+
+  .alfStorySystem {
+    top: 98px;
+    left: 20px;
+    right: 20px;
+    max-width: 260px;
+    text-align: left;
+    font-size: 12px;
+  }
+
+  .alfStoryTitle,
+  .alfStoryTitle.isHero {
+    max-width: 12ch;
+    font-size: clamp(34px, 10vw, 52px);
+  }
+
+  .alfStoryBody {
+    font-size: 16px;
+    line-height: 1.58;
+  }
+
+  .alfPrinciples {
+    display: none;
+  }
+
+  .alfPrinciple {
+    font-size: 11px;
+  }
+}
+
 /**
  * Using the elevate system.
  * Automatic contrast adjustment.

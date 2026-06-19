@@ -39,14 +39,10 @@ export function CookieConsent({}: CookieConsentProps) {
 
   useEffect(() => {
     const hasConsent = checkConsent();
-    console.log('Cookie consent check:', hasConsent);
     if (hasConsent) {
       // Включаем метрику если согласие уже есть и метрика еще не инициализирована
       if (window.enableYandexMetrika && !window.ymInitialized) {
-        console.log('Enabling Yandex Metrika');
         window.enableYandexMetrika();
-      } else if (window.ymInitialized) {
-        console.log('Yandex Metrika already initialized');
       }
     } else {
       setIsVisible(true);
@@ -62,11 +58,9 @@ export function CookieConsent({}: CookieConsentProps) {
     };
     
     localStorage.setItem('cookieConsent', JSON.stringify(consentData));
-    console.log('Cookie consent saved:', consentData);
     
     // Включаем метрику
     if (window.enableYandexMetrika) {
-      console.log('Activating Yandex Metrika after consent');
       window.enableYandexMetrika();
     }
     
@@ -79,23 +73,22 @@ export function CookieConsent({}: CookieConsentProps) {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="liquid-glass p-6 rounded-3xl">
-          <div className="flex flex-col gap-4">
-            <div className="flex items-start gap-3">
+    <div className="fixed bottom-4 left-4 right-4 z-50 sm:left-auto sm:right-4 sm:max-w-sm">
+      <div className="rounded-lg border border-white/10 bg-black/80 p-3 shadow-2xl backdrop-blur-xl">
+          <div className="flex items-end gap-3">
+            <div className="flex min-w-0 flex-1 items-start gap-2.5">
               <input
                 type="checkbox"
                 id="consent-checkbox"
                 checked={isAccepted}
                 onChange={(e) => setIsAccepted(e.target.checked)}
-                className="mt-1 w-5 h-5 cursor-pointer accent-purple-500"
+                className="mt-1 h-4 w-4 cursor-pointer accent-[#c8b97a]"
               />
-              <label htmlFor="consent-checkbox" className="text-sm text-foreground leading-relaxed cursor-pointer">
-                Я соглашаюсь на сбор данных с помощью сервиса Яндекс.Метрика и принимаю{' '}
+              <label htmlFor="consent-checkbox" className="cursor-pointer text-[11px] leading-relaxed text-white/78 sm:text-xs">
+                Я соглашаюсь на Яндекс.Метрику и принимаю{' '}
                 <a
                   href="/privacy-policy"
-                  className="text-rainbow-cyan hover:underline transition-colors"
+                  className="text-[#c8b97a] transition-colors hover:text-white"
                 >
                   политику конфиденциальности
                 </a>
@@ -105,12 +98,11 @@ export function CookieConsent({}: CookieConsentProps) {
               onClick={handleAccept}
               disabled={!isAccepted}
               size="sm"
-              className="btn-glass rounded-full max-w-40 mx-auto disabled:opacity-50"
+              className="h-8 shrink-0 rounded bg-[#c8b97a] px-3 text-xs font-medium text-black hover:bg-[#d4c581] disabled:opacity-45"
             >
               Принять
             </Button>
           </div>
-        </div>
       </div>
     </div>
   );

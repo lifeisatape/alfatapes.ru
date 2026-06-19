@@ -5,7 +5,7 @@ const sourceRoot = path.resolve(import.meta.dirname, '..');
 const repoRoot = path.resolve(sourceRoot, '..', '..');
 const dist = path.join(sourceRoot, 'dist');
 
-const keep = new Set(['.git', '_source', 'CNAME']);
+const keep = new Set(['.git', '.gitignore', '_source', 'CNAME']);
 const entries = await fs.readdir(repoRoot, { withFileTypes: true });
 for (const entry of entries) {
   if (keep.has(entry.name)) continue;

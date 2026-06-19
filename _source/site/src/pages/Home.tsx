@@ -3,34 +3,38 @@ import { ArrowRight, Send } from "lucide-react";
 
 const BOT_URL = "https://t.me/yo_tapes_bot";
 const MOSCOW_URL = "https://tapes.moscow";
-const MOSCOW_TG_URL = "https://t.me/tapesmoscow";
 
 const slides = [
   {
     title: "alfatápes",
-    accent: "делает AI-продукты, которые остаются в работе",
-    body: "Не витрина возможностей. Не набор кейсов. Мы собираем живые операционные контуры: бот, память, задачи, подтверждение и понятный следующий шаг.",
+    accent: "порядок в заявках, клиентах и задачах за 7 дней",
+    body: "Настраиваем рабочий контур вокруг ваших чатов, сайта и CRM: заявки не теряются, следующий шаг виден, руководитель понимает, что происходит.",
   },
   {
-    title: "Обычный AI быстро становится шумом",
-    accent: "если он не связан с реальностью бизнеса",
-    body: "Люди пишут в Telegram, решения теряются в созвонах, CRM живёт отдельно, а собственник снова держит контекст в голове.",
+    title: "Не новая CRM",
+    accent: "не ещё один чат",
+    body: "Мы не заставляем команду переезжать в новую систему. Сначала смотрим, где сейчас теряются заявки, договорённости и задачи — и закрываем это место.",
   },
   {
-    title: "Мы проектируем не бота",
-    accent: "а управляемый вход в систему",
-    body: "Пользователь пишет привычным языком. Агент собирает контекст, готовит действие, человек подтверждает. Всё остаётся в истории, задачах и памяти.",
+    title: "Заявки теряются не потому",
+    accent: "что люди плохие",
+    body: "Просто всё живёт в разных местах: Telegram, сайт, CRM, голосовые, созвоны и личные заметки. Контекст не собирается сам.",
   },
   {
-    title: "tapes.Moscow",
-    accent: "первый публичный продукт в этом формате",
-    body: "Городские истории, партнёры и вход через Telegram.",
-    product: true,
+    title: "Собираем первый",
+    accent: "рабочий контур",
+    body: "Заявка приходит из чата или формы, попадает в понятное место, получает ответственного, следующий шаг и напоминание. Важные действия подтверждает человек.",
   },
   {
-    title: "Формат переносится",
-    accent: "на бизнес, сообщество, проект или город",
-    body: "Один и тот же принцип: найти поток, где теряется внимание, и собрать рядом с ним AI-слой с человеческим контролем.",
+    title: "Первый результат",
+    accent: "за неделю",
+    body: "За 7 дней можно запустить простой сценарий: заявки из Telegram или сайта, карточка клиента, задача менеджеру и контроль следующего шага.",
+  },
+  {
+    title: "Подходит",
+    accent: "если работа уже идёт в чатах",
+    body: "Малый бизнес, агентство, сервисная команда, локальный проект или сообщество — везде, где люди пишут, договариваются и потом теряют продолжение.",
+    cta: true,
   },
 ];
 
@@ -96,7 +100,7 @@ export default function Home() {
           alfatápes
         </a>
         <nav className="alfStoryNav" aria-label="main">
-          <a href="#product">tapes.Moscow</a>
+          <a href="#product">пример</a>
           <a href={BOT_URL} target="_blank" rel="noopener noreferrer">
             бот
           </a>
@@ -113,8 +117,8 @@ export default function Home() {
         {slides.map((slide, index) => (
           <article
             key={slide.title}
-            id={slide.product ? "product" : undefined}
-            className={`alfStorySlide${slide.product ? " isProduct" : ""}`}
+            id={slide.cta ? "product" : undefined}
+            className={`alfStorySlide${slide.cta ? " isProduct" : ""}`}
           >
             <div className="alfStoryContent">
               <h1 className={index === 0 ? "alfStoryTitle isHero" : "alfStoryTitle"}>
@@ -123,18 +127,18 @@ export default function Home() {
               </h1>
               <p className="alfStoryBody">{slide.body}</p>
 
-              {slide.product && (
+              {slide.cta && (
                 <div className="alfProductProof">
                   <div>
-                    <strong>tapes.Moscow</strong>
+                    <strong>разобрать ваш контур</strong>
                   </div>
-                  <p>живой продукт alfatápes</p>
+                  <p>Пример подхода: tapes.Moscow — публичный продукт, где Telegram становится входом в рабочий сценарий.</p>
                   <div className="alfProductActions">
-                    <a className="alfProductButton isPrimary" href={MOSCOW_URL} target="_blank" rel="noopener noreferrer">
-                      сайт <ArrowRight className="h-4 w-4" />
+                    <a className="alfProductButton isPrimary" href={BOT_URL} target="_blank" rel="noopener noreferrer">
+                      написать в Telegram <Send className="h-4 w-4" />
                     </a>
-                    <a className="alfProductButton" href={MOSCOW_TG_URL} target="_blank" rel="noopener noreferrer">
-                      @tapesmoscow <Send className="h-4 w-4" />
+                    <a className="alfProductButton" href={MOSCOW_URL} target="_blank" rel="noopener noreferrer">
+                      посмотреть пример <ArrowRight className="h-4 w-4" />
                     </a>
                   </div>
                 </div>

@@ -186,7 +186,7 @@
   right: clamp(18px, 4vw, 44px);
   z-index: 30;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 6px;
 }
 
@@ -298,7 +298,6 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   line-height: 1.6;
-  text-transform: uppercase;
 }
 
 .alfProductActions {
@@ -357,6 +356,40 @@
   .alfStorySlide {
     padding: 92px 20px 118px;
     align-items: end;
+  }
+
+  .alfStorySlide.isProduct {
+    align-items: center;
+    padding-bottom: 168px;
+  }
+
+  .alfStorySlide.isProduct .alfStoryContent {
+    transform: none;
+  }
+
+  .alfStorySlide.isProduct .alfStoryTitle {
+    max-width: 13ch;
+    font-size: clamp(34px, 9vw, 44px);
+  }
+
+  .alfStorySlide.isProduct .alfStoryBody {
+    font-size: 17px;
+    line-height: 1.44;
+  }
+
+  .alfStorySlide.isProduct .alfProductProof {
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .alfStorySlide.isProduct .alfProductProof strong {
+    font-size: 36px;
+    line-height: 0.98;
+  }
+
+  .alfStorySlide.isProduct .alfProductProof p {
+    font-size: 13px;
+    line-height: 1.42;
   }
 
   .alfStoryTitle,

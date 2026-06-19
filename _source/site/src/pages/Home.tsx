@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import { ArrowRight, Bot } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, Send } from "lucide-react";
 
 const BOT_URL = "https://t.me/yo_tapes_bot";
+const MOSCOW_URL = "https://tapes.moscow";
+const MOSCOW_TG_URL = "https://t.me/tapesmoscow";
 
 const slides = [
   {
@@ -23,19 +24,13 @@ const slides = [
   {
     title: "tapes.Moscow",
     accent: "первый публичный продукт в этом формате",
-    body: "Истории, партнёры, городская энергия и вход через бота. Не презентация на десять экранов, а живой слой, куда можно зайти и начать диалог.",
+    body: "Городские истории, партнёры и вход через Telegram.",
     product: true,
   },
   {
     title: "Формат переносится",
     accent: "на бизнес, сообщество, проект или город",
     body: "Один и тот же принцип: найти поток, где теряется внимание, и собрать рядом с ним AI-слой с человеческим контролем.",
-  },
-  {
-    title: "Начать можно с одного разговора",
-    accent: "бот соберёт контекст и передаст его дальше",
-    body: "Расскажи, где у тебя теряются заявки, решения или контент. Мы превратим это в первый рабочий сценарий.",
-    final: true,
   },
 ];
 
@@ -118,8 +113,8 @@ export default function Home() {
         {slides.map((slide, index) => (
           <article
             key={slide.title}
-            id={slide.product ? "product" : slide.final ? "contact" : undefined}
-            className={`alfStorySlide${slide.product ? " isProduct" : ""}${slide.final ? " isFinal" : ""}`}
+            id={slide.product ? "product" : undefined}
+            className={`alfStorySlide${slide.product ? " isProduct" : ""}`}
           >
             <div className="alfStoryContent">
               <h1 className={index === 0 ? "alfStoryTitle isHero" : "alfStoryTitle"}>
@@ -133,24 +128,15 @@ export default function Home() {
                   <div>
                     <strong>tapes.Moscow</strong>
                   </div>
-                  <p>story-first AI surface для партнёров, города и входа через Telegram-бота.</p>
-                  <a href="https://tapes.moscow" target="_blank" rel="noopener noreferrer">
-                    открыть tapes.moscow <ArrowRight className="h-4 w-4" />
-                  </a>
-                </div>
-              )}
-
-              {slide.final && (
-                <div className="alfFinalActions">
-                  <Button asChild className="alfPrimaryButton">
-                    <a href={BOT_URL} target="_blank" rel="noopener noreferrer">
-                      <Bot className="h-4 w-4" />
-                      написать боту
+                  <p>живой продукт alfatápes</p>
+                  <div className="alfProductActions">
+                    <a className="alfProductButton isPrimary" href={MOSCOW_URL} target="_blank" rel="noopener noreferrer">
+                      сайт <ArrowRight className="h-4 w-4" />
                     </a>
-                  </Button>
-                  <a className="alfTextLink" href="https://tapes.moscow" target="_blank" rel="noopener noreferrer">
-                    посмотреть tapes.Moscow
-                  </a>
+                    <a className="alfProductButton" href={MOSCOW_TG_URL} target="_blank" rel="noopener noreferrer">
+                      @tapesmoscow <Send className="h-4 w-4" />
+                    </a>
+                  </div>
                 </div>
               )}
             </div>

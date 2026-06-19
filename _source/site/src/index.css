@@ -130,8 +130,8 @@
 
 .alfStoryShade {
   background:
-    linear-gradient(90deg, rgba(1, 4, 9, 0.78), rgba(1, 4, 9, 0.34) 48%, rgba(1, 4, 9, 0.82)),
-    radial-gradient(circle at 72% 36%, rgba(47, 140, 255, 0.28), transparent 34%);
+    linear-gradient(0deg, rgba(1, 4, 9, 0.9) 0%, rgba(1, 4, 9, 0.44) 28%, rgba(1, 4, 9, 0.08) 66%, rgba(1, 4, 9, 0.18) 100%),
+    linear-gradient(0deg, rgba(47, 140, 255, 0.2) 0%, rgba(47, 140, 255, 0) 34%);
 }
 
 .alfStoryTop {
@@ -188,7 +188,7 @@
   right: clamp(18px, 4vw, 44px);
   z-index: 30;
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 6px;
 }
 
@@ -271,14 +271,14 @@
   position: relative;
   z-index: 22;
   display: grid;
-  gap: 14px;
-  width: min(420px, 100%);
+  gap: 16px;
+  width: min(460px, 100%);
   margin-top: 30px;
-  padding: 20px;
-  background: var(--alf-surface);
-  border: 1px solid var(--alf-border);
-  border-radius: 8px;
-  box-shadow: 0 0 36px rgba(47, 140, 255, 0.12);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .alfProductProof strong {
@@ -295,55 +295,56 @@
 
 .alfProductProof p {
   margin: 0;
-  color: var(--alf-muted);
+  color: var(--alf-accent-2);
   font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   line-height: 1.6;
+  text-transform: uppercase;
 }
 
-.alfProductProof a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  width: fit-content;
-  color: var(--alf-accent);
-  font-size: 13px;
-}
-
-.alfFinalActions {
-  position: relative;
-  z-index: 22;
+.alfProductActions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 30px;
+  gap: 10px;
 }
 
-.alfPrimaryButton {
+.alfProductButton {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 9px;
   min-height: 44px;
-  border-radius: 4px;
-  background: var(--alf-accent);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 800;
-  box-shadow: 0 0 24px rgba(47, 140, 255, 0.35);
-}
-
-.alfPrimaryButton:hover {
-  background: #58a4ff;
-  color: #fff;
-}
-
-.alfTextLink {
-  color: var(--alf-muted);
-  font-size: 11px;
-}
-
-.alfTextLink:hover {
+  padding: 0 17px;
+  border: 1px solid rgba(123, 183, 255, 0.5);
+  border-radius: 5px;
+  background: rgba(1, 4, 9, 0.56);
   color: var(--alf-text);
+  font-family: Rajdhani, Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: skewX(-7deg);
+  box-shadow: 0 0 22px rgba(47, 140, 255, 0.16);
+}
+
+.alfProductButton svg {
+  transform: skewX(7deg);
+}
+
+.alfProductButton:hover {
+  border-color: rgba(123, 183, 255, 0.86);
+  background: rgba(47, 140, 255, 0.18);
+  color: #fff;
+}
+
+.alfProductButton.isPrimary {
+  border-color: var(--alf-accent);
+  background: var(--alf-accent);
+  box-shadow: 0 0 26px rgba(47, 140, 255, 0.38);
 }
 
 .alfTapZone {

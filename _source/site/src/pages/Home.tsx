@@ -61,9 +61,10 @@ export default function Home() {
       setActive(next);
     };
 
-    const onZoneClick = (event: Event) => {
-      const target = event.currentTarget as HTMLElement;
-      goTo(target.dataset.storyZone === "next" ? current + 1 : current - 1);
+    const onRailClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (target?.closest("a, button")) return;
+      goTo(event.clientX > window.innerWidth / 2 ? current + 1 : current - 1);
     };
 
     const onKey = (event: KeyboardEvent) => {
@@ -71,15 +72,14 @@ export default function Home() {
       if (event.key === "ArrowLeft") goTo(current - 1);
     };
 
-    const zones = Array.from(document.querySelectorAll("[data-story-zone]"));
-    zones.forEach((zone) => zone.addEventListener("click", onZoneClick));
     rail.addEventListener("scroll", syncFromScroll, { passive: true });
+    rail.addEventListener("click", onRailClick);
     window.addEventListener("keydown", onKey);
     setActive(0);
 
     return () => {
-      zones.forEach((zone) => zone.removeEventListener("click", onZoneClick));
       rail.removeEventListener("scroll", syncFromScroll);
+      rail.removeEventListener("click", onRailClick);
       window.removeEventListener("keydown", onKey);
     };
   }, []);
@@ -144,8 +144,6 @@ export default function Home() {
         ))}
       </section>
 
-      <button className="alfTapZone left" type="button" aria-label="previous story" data-story-zone="prev" />
-      <button className="alfTapZone right" type="button" aria-label="next story" data-story-zone="next" />
     </main>
   );
 }

@@ -1,7 +1,4 @@
 import { useState, useEffect } from "react";
-import { ShaderBackground } from "@/components/ShaderBackground";
-import { SectionBackdrop } from "@/components/SectionBackdrop";
-import { Button } from "@/components/ui/button";
 import { ArrowLeft, Check } from "lucide-react";
 import { Link } from "wouter";
 
@@ -74,61 +71,46 @@ function RevokeConsentButton() {
   }
 
   return (
-    <Button
+    <button
       onClick={handleRevokeConsent}
-      variant={isRevoked ? "outline" : "default"}
-      className={`${isRevoked ? "border-green-500 text-green-500" : "btn-glass"} rounded-full transition-all duration-300`}
+      className={`alfPolicyRevoke${isRevoked ? " isRevoked" : ""}`}
       disabled={isRevoked}
     >
       {isRevoked ? (
         <>
           <Check className="w-4 h-4 mr-2" />
-          Согласие отозвано
+          <span>Согласие отозвано</span>
         </>
       ) : (
-        "Отозвать согласие"
+        <span>Отозвать согласие</span>
       )}
-    </Button>
+    </button>
   );
 }
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen text-foreground">
-      <ShaderBackground />
-
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between max-w-7xl">
-          <Link href="/">
-            <div className="text-xl font-bold">
-              <span className="shimmer-text-smooth animate-shimmer-smooth">alfatápes</span>
-            </div>
-          </Link>
-          <Link href="/">
-            <Button variant="outline" size="icon" className="btn-glass rounded-full">
-              <ArrowLeft className="w-5 h-5" />
-            </Button>
-          </Link>
-        </div>
+    <div className="alfPolicyPage">
+      <header className="alfPolicyHeader">
+        <Link href="/" className="alfPolicyBrand">
+          alfatápes
+        </Link>
+        <Link href="/" className="alfPolicyBack" aria-label="Вернуться на главную">
+          <ArrowLeft className="w-5 h-5" />
+        </Link>
       </header>
 
-      {/* Content */}
-      <section className="relative pt-32 pb-20 px-6">
-        <SectionBackdrop opacity="medium" />
-        <div className="container mx-auto max-w-4xl relative z-10">
-          <div className="liquid-glass p-8 md:p-12 rounded-3xl">
-            <h1 className="text-1xl md:text-4xl font-bold mb-8 text-center">
-              Политика конфиденциальности
-            </h1>
+      <main className="alfPolicyMain">
+        <h1 className="alfPolicyTitle">
+          <span>Политика</span>
+          <span>конфиденциальности</span>
+        </h1>
 
-            <div className="prose prose-invert prose-lg max-w-none">
-              
-
+        <section className="alfPolicyPanel">
+          <div className="alfPolicyContent">
               <h2 className="text-2xl font-semibold mt-8 mb-4">1. Общие положения</h2>
               <p className="mb-4">1.1. Настоящая Политика определяет порядок обработки данных пользователей сайта alfatapes.ru (далее — «Сайт»).</p>
-              <p className="mb-4">1.2. Оператор данных: физическое лицо, зарегистрированное в качестве налогоплательщика налога на профессиональный доход, Белов Дмитрий Владимирович, ИНН: 101502627174 </p>
-              <p className="mb-6">1.3. Используя Сайт и подтверждая согласие (например, через всплывающий баннер), вы соглашаетесь с условиями настоящей Политики.</p>
+              <p className="mb-6">1.2. Используя Сайт и подтверждая согласие (например, через всплывающий баннер), вы соглашаетесь с условиями настоящей Политики.</p>
 
               <h2 className="text-2xl font-semibold mt-8 mb-4">2. Какие данные мы обрабатываем</h2>
               <p className="mb-4">2.1. Данные, собираемые автоматически с помощью Яндекс.Метрики:</p>
@@ -148,7 +130,7 @@ export default function PrivacyPolicy() {
               <p className="mb-4">4.1. Обработка данных осуществляется на следующих основаниях:</p>
               <ul className="list-disc pl-6 mb-6">
                 <li>Согласие субъекта персональных данных (п. 1 ч. 1 ст. 6 152-ФЗ) — для сбора данных через Яндекс.Метрику.</li>
-                <li>Законные интересы оператора (п. 5 ч. 1 ст. 6 152-ФЗ) — для обеспечения технической работоспособности и безопасности Сайта.</li>
+                <li>Законные интересы администрации Сайта (п. 5 ч. 1 ст. 6 152-ФЗ) — для обеспечения технической работоспособности и безопасности Сайта.</li>
               </ul>
 
               <h2 className="text-2xl font-semibold mt-8 mb-4">5. Использование сервиса Яндекс.Метрика</h2>
@@ -175,7 +157,7 @@ export default function PrivacyPolicy() {
               <p className="mb-6">8.2. Чтобы отозвать согласие на обработку данных Яндекс.Метрикой необходимо нажать на кнопку "Отозвать согласие".</p>
 
               <h2 className="text-2xl font-semibold mt-8 mb-4">9. Контакты</h2>
-              <p className="mb-4">По всем вопросам, связанным с обработкой ваших данных, вы можете обратиться к оператору:</p>
+              <p className="mb-4">По всем вопросам, связанным с обработкой данных, вы можете связаться с alfatápes:</p>
               <p className="mb-6">
                 Ссылка для связи в Telegram: <a href="https://t.me/alfatapes" target="_blank" rel="noopener noreferrer" className="text-rainbow-cyan hover:underline">@alfatapes</a>
               </p>
@@ -184,15 +166,13 @@ export default function PrivacyPolicy() {
               <h2 className="text-2xl font-semibold mt-8 mb-4">10. Заключительные положения</h2>
               <p className="mb-6">10.1. Настоящая Политика может изменяться. Актуальная версия всегда доступна на этой странице.</p>
 
-            
-                <h3 className="text-lg font-semibold mb-4">Управление согласием</h3>
-                
+              <div className="alfPolicyConsent">
+                <h3>Управление согласием</h3>
                 <RevokeConsentButton />
-              
-            </div>
+              </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     </div>
   );
 }

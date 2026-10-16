@@ -26,7 +26,6 @@ const slides = [
     title: "Дайте знать",
     accent: "если теряется контекст",
     body: "Если есть поток заявок, команда, клиенты или проект, где важное распадается между чатами, задачами и заметками.",
-    partners: ["МФЦН", "КОН", "ЛИНИЯ", "ИСКРА"],
     cta: "bot",
   },
 ];
@@ -119,13 +118,6 @@ export default function Home() {
                 <span>{slide.accent}</span>
               </h1>
               <p className="alfStoryBody">{slide.body}</p>
-
-              {slide.partners && (
-                <div className="alfPartnerLine" aria-label="Партнёры">
-                  <span>Партнёры:</span>
-                  <strong>{slide.partners.join(" · ")}</strong>
-                </div>
-              )}
 
               {slide.cta && (
                 <div className="alfProductProof">
